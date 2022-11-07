@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Subnautica</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Subnautica</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>10m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-9/11/2022">9/11/2022</a> 20:21:18</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-9/11/2022">9/11/2022</a> 20:23:37</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20list%20text_completionstatus_ascending_name_ascending.html#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Epic">Epic</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Epic">Epic</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-1/23/2018">1/23/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-84">84</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-84">84</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20list%20text%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Unknown Worlds Entertainment">Unknown Worlds Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Gearbox Publishing">Gearbox Publishing</a><br/><a href="default%20list%20text%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Unknown Worlds Entertainment">Unknown Worlds Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Nexus Mods">Nexus Mods</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/><a href="default%20list%20text%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-VR">VR</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.facebook.com/subnautica" target="_blank">Facebook</a><br/><a href="https://twitter.com/subnautica" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/264710" target="_blank">Steam</a><br/><a href="https://en.wikipedia.org/wiki/Subnautica" target="_blank">Wikipedia</a><br/><a href="http://unknownworlds.com/subnautica" target="_blank">Official Website</a><br/><a href="http://subnautica.wikia.com/wiki/Subnautica_Wiki" target="_blank">Wikia</a><br/><a href="https://www.epicgames.com/store/en-US/product/subnautica/home" target="_blank">Epic</a><br/><a href="https://instagram.com/subnautica" target="_blank">Instagram</a><br/><a href="https://youtube.com/subnautica" target="_blank">Youtube</a><br/><a href="https://nexusmods.com/subnautica" target="_blank">Nexus Mods</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p>Subnautica is an underwater adventure game set on an alien ocean planet. A massive, open world full of wonder and peril awaits you!</p>
+<p><img src="https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fsubnautica%2F10_SeaglidingInGrassyPlats-1920x1080-8d9db3145f7e3afb5310d454cfb8a67673c2bffb.jpg" alt="Subnautica Image" /></p>
+<h1>Dive Into a Vast Underwater World</h1>
+<p>You have crash-landed on an alien ocean world and the only way to go is down. Manage your oxygen supply as you explore kelp forests, plateaus, reefs, and winding cave systems. The water teems with life: Some of it helpful, much of it harmful.</p>
+<p><img src="https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fsubnautica%2F3_MushroomForestReaper-1920x1080-250dd117ed916fc4274d42fb986d0f6b13eab87d.jpg" alt="Subnautica Image" /></p>
+<h1>Scavenge, Craft, and Survive</h1>
+<p>After crash landing in your Life Pod, the clock is ticking to ﬁnd water, food, and to develop the equipment you need to explore. Collect resources from the ocean around you. Craft diving gear, lights, habitat modules, and submersibles.</p>
+<p><img src="https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fsubnautica%2F5_BulbZoneBase-1920x1080-17bf74ac68b7d258b85eda4966a6287013441b11.jpg" alt="Subnautica Image" /></p>
+<h1>Construct Underwater Habitats</h1>
+<p>Build bases on the sea ﬂoor. Choose layouts and components, and manage hull-integrity as depth and pressure increase. Use your base to store resources, park vehicles, and replenish oxygen supplies as you explore the vast ocean.</p>
+<p><img src="https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fsubnautica%2F9_Lifepod6-1920x1080-1786a56585d0cd5e7fa60d7eaffda8aa77ed0f72.jpg" alt="Subnautica Image" /></p>
+<h1>Unravel the Mystery</h1>
+<p>What happened to this planet? Signs abound that something is not right. What caused you to crash? What is infecting the sea life? Who built the mysterious structures scattered around the ocean? Can you ﬁnd a way to make it oﬀ the planet alive?</p>
+<p><img src="https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fsubnautica%2F4_KelpForest-1920x1080-fa25b289af4b64e8c2e6160ae8135a82f0ea7c91.jpg" alt="Subnautica Image" /></p>
+<h1>Disrupt the Food Chain</h1>
+<p>The ocean teems with life: Use the ecosystem to help you. Lure and distract a threatening creature with a fresh ﬁsh, or simply swim as fast as you can to avoid gnashing jaws of roaming predators.</p>
+<p><img src="https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fsubnautica%2F6_LostRiver_Bonesfield-1920x1080-1a1c99f7b6a5580ee57c9b778e40d282f5404a4b.jpg" alt="Subnautica Image" /></p>
+<h1>Handle the Pressure</h1>
+<p>Build a Pressure Re-Active Waterproof Nanosuit, or PRAWN Suit, and explore extreme depth and heat. Modify the suit with mining drills, torpedo launchers, propulsion cannons, grappling hooks and more.</p>
+<p><img src="https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fsubnautica%2F8_CrabsquidAttack-1920x1080-8a4b82aea42128903036196c67acf8b1421201b4.jpg" alt="Subnautica Image" /></p>
+<h1>Fear the Night</h1>
+<p>As the sun goes down, the predators come out. Areas that are safe to explore during the day become treacherous at night, but also reveal a beauty that those who hide from the darkness will never see.</p>
+<p><img src="https://cdn2.unrealengine.com/Diesel%2Fproduct%2Fsubnautica%2F7_LavaLizards-1920x1080-e4feae53f5e8c93f547d28749362aa403c51e02a.jpg" alt="Subnautica Image" /></p>
+<h1>Dive Below the Ocean Floor</h1>
+<p>Cave systems wind below the sea bed, from dark, tiny passages to caverns lit by bioluminescent life and burning-hot lava ﬂows. Watch your oxygen levels, and take care to avoid the threats lurking in the darkness.</p>
+<h1>About the development team</h1>
+<p>Subnautica is created by Unknown Worlds, a small studio that traces its roots back to the 2002 Half-Life mod Natural Selection. The team is scattered around the globe, from the United States to the United Kingdom, France, Austria, Australia, and many more.</p>
+<h1>Warning</h1>
+<p>This game contains ﬂashing lights that may make it unsuitable for people with photosensitive epilepsy or other photosensitive conditions. Player discretion is advised.</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
